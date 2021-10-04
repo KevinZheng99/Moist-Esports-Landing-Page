@@ -46,6 +46,10 @@ const switchSections = function (
     collapseSection(sectionOpen);
     sectionOpen.classList.add("collapsed");
     linkOpen.style.textDecoration = "none";
+
+    sectionOpen
+      .querySelectorAll("a")
+      .forEach(link => link.classList.add("hidden"));
   } else {
     // expands
     sectionOpen.querySelectorAll("a").forEach(link => {

@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Roboto&display=swap");
 
 * {
   margin: 0;
@@ -11,15 +10,10 @@
 
 .main-header {
   align-items: center;
-  box-shadow: 0 0 5px gray;
   display: flex;
   gap: 1em;
   justify-content: space-between;
   padding: 0.5em 3em;
-}
-
-.header-title {
-  font-family: "Permanent Marker", cursive;
 }
 
 .header-links {
@@ -28,7 +22,7 @@
 }
 
 .header-links a {
-  color: black;
+  color: white;
   font-size: 1.25rem;
   font-weight: bold;
   padding: 0 1.5em;
@@ -47,7 +41,7 @@
   justify-content: center;
   padding: 1em 0;
   position: absolute;
-  transition: all 0.75s;
+  transition: all 0.5s;
   width: 100%;
   z-index: 1;
 }
@@ -64,6 +58,41 @@
 .drop-down-partners-container img:hover,
 .drop-down-teams-container img:hover {
   filter: brightness(0) invert(75%);
+}
+
+/* Main Hero Section */
+
+.hero {
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url(../../imgs/hero-background.svg) top/cover;
+  color: white;
+  height: 100vh;
+  width: 100%;
+}
+
+.hero-text-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  font-size: 2rem;
+  gap: 1em;
+  margin-top: 5em;
+  text-align: center;
+}
+
+.buy-now-btn {
+  background-color: black;
+  border: 1px solid white;
+  border-radius: 10px;
+  color: white;
+  padding: 1rem;
+  transition: background-color 0.5s, color 0.5s;
+  text-decoration: none;
+}
+
+.buy-now-btn:hover {
+  background-color: white;
+  color: black;
 }
 
 /* Others */
