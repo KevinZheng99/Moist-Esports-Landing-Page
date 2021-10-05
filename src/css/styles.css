@@ -1,5 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 
+:root {
+  --main-color: white;
+  --hover-links-color: hsl(0, 0%, 70%);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -22,11 +27,16 @@
 }
 
 .header-links a {
-  color: white;
+  color: var(--main-color);
   font-size: 1.25rem;
   font-weight: bold;
   padding: 0 1.5em;
+  transition: color 0.25s;
   text-decoration: none;
+}
+
+.header-links a:hover {
+  color: var(--hover-links-color);
 }
 
 /* Partners drop down */
@@ -57,7 +67,7 @@
 
 .drop-down-partners-container img:hover,
 .drop-down-teams-container img:hover {
-  filter: brightness(0) invert(75%);
+  filter: brightness(0) invert(70%);
 }
 
 /* Main Hero Section */
@@ -65,7 +75,7 @@
 .hero {
   background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
     url(../../imgs/hero-background.svg) top/cover;
-  color: white;
+  color: var(--main-color);
   height: 100vh;
   width: 100%;
 }
@@ -82,17 +92,57 @@
 
 .buy-now-btn {
   background-color: black;
-  border: 1px solid white;
+  border: 1px solid var(--main-color);
   border-radius: 10px;
-  color: white;
+  color: var(--main-color);
   padding: 1rem;
   transition: background-color 0.5s, color 0.5s;
   text-decoration: none;
 }
 
 .buy-now-btn:hover {
-  background-color: white;
+  background-color: var(--main-color);
   color: black;
+}
+
+/* Footer Section */
+
+.footer {
+  background-color: black;
+  padding: 2em 0;
+  text-align: center;
+}
+
+.footer-socials {
+  font-size: 1.5rem;
+  margin-bottom: 2em;
+}
+
+.footer-links {
+  margin-bottom: 2em;
+}
+
+.footer-socials a,
+.footer-links a {
+  color: var(--main-color);
+  margin-right: 1em;
+  transition: color 0.25s;
+  text-decoration: none;
+}
+
+.footer-socials a:hover,
+.footer-links a:hover {
+  color: var(--hover-links-color);
+}
+
+.footer-squarespace,
+.footer-squarespace a {
+  color: var(--main-color);
+  transition: color 0.25s;
+}
+
+.footer-squarespace a:hover {
+  color: var(--hover-links-color);
 }
 
 /* Others */
