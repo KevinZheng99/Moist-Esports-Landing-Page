@@ -27,7 +27,26 @@
 .socials-container {
   align-items: center;
   display: flex;
-  justify-content: space-evenly;
+  gap: 2em;
+  margin-left: 1em;
+}
+
+.player-info-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.player-ign {
+  font-size: 2rem;
+}
+
+.player-name {
+  font-size: 1.25rem;
+}
+
+.player-summary {
+  width: 90%;
 }
 
 .socials-container a {
