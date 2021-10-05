@@ -11,6 +11,10 @@
   font-family: "Roboto", sans-serif;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 /* Header Section */
 
 .main-header {
@@ -57,7 +61,8 @@
 }
 
 .drop-down-partners-container img,
-.drop-down-teams-container img {
+.drop-down-teams-container img,
+.sponsors-section img {
   filter: brightness(0) invert(1);
   max-height: 50px;
   max-width: 100px;
@@ -66,7 +71,8 @@
 }
 
 .drop-down-partners-container img:hover,
-.drop-down-teams-container img:hover {
+.drop-down-teams-container img:hover,
+.sponsors-section img:hover {
   filter: brightness(0) invert(70%);
 }
 
@@ -103,6 +109,41 @@
 .buy-now-btn:hover {
   background-color: var(--main-color);
   color: black;
+}
+
+/* What is Moist Esports? */
+
+.moist-esports-summary-container {
+  color: gray;
+  margin: auto;
+  padding: 5em 0;
+  text-align: center;
+  width: 50%;
+}
+
+.summary-title {
+  margin-bottom: 1em;
+  font-size: 1.75rem;
+}
+
+.moist-esports-summary {
+  font-size: 1.125rem;
+}
+
+/* Partners/Sponsors Section */
+
+.sponsors-section {
+  align-items: center;
+  background-color: black;
+  display: flex;
+  gap: 2em;
+  justify-content: center;
+  padding: 2em 0;
+}
+
+.sponsors-section img {
+  max-height: 100px;
+  max-width: 200px;
 }
 
 /* Footer Section */
