@@ -11,7 +11,9 @@ const containerDropDownPartners = document.querySelector(
 const containerDropDownTeams = document.querySelector(
   ".drop-down-teams-container"
 );
+const containerPlayers = document.querySelector(".players-container");
 
+const players = document.querySelectorAll(".player");
 const dropDownOverlay = document.querySelector(".drop-down-overlay");
 
 // Functions
@@ -89,4 +91,22 @@ linkTeams.addEventListener("click", function () {
     linkTeams,
     linkPartners
   );
+});
+
+let isActive = false;
+
+// Fading in Player Section
+window.addEventListener("scroll", function () {
+  console.log(window.scrollY);
+  if (
+    containerPlayers.getBoundingClientRect().y <= window.scrollY &&
+    !isActive
+  ) {
+    players.forEach(player => {
+      requestAnimationFrame(function () {
+        player.style.opacity = 1;
+      });
+    });
+    isActive = true;
+  }
 });
