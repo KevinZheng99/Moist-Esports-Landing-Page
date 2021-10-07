@@ -162,11 +162,17 @@ html {
 
 .footer-socials {
   font-size: 1.5rem;
-  margin-bottom: 2em;
+}
+
+.footer-links-container {
+  margin: 2em 0;
 }
 
 .footer-links {
-  margin-bottom: 2em;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+  justify-content: center;
 }
 
 .footer-socials a,
@@ -221,13 +227,40 @@ html {
   .logo img {
     width: 250px;
   }
+
+  .moist-esports-summary-container {
+    width: 75%;
+  }
+
+  .sponsors-section img {
+    max-height: 50px;
+    max-width: 100px;
+  }
 }
 
 @media (max-width: 500px) {
   .main-header {
     justify-content: flex-end;
   }
+
   .logo img {
     width: 150px;
+  }
+
+  .hero-text-container {
+    font-size: 1.5rem;
+  }
+
+  .buy-now-btn {
+    font-size: 1rem;
+  }
+
+  .moist-esports-summary-container {
+    width: 95%;
+  }
+
+  .sponsors-section {
+    flex-direction: column;
+    gap: 2em;
   }
 }
