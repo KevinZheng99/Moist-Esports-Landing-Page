@@ -216,3 +216,18 @@ html {
     display: none;
   }
 }
+
+@media (max-width: 1000px) {
+  .logo img {
+    width: 250px;
+  }
+}
+
+@media (max-width: 500px) {
+  .main-header {
+    justify-content: flex-end;
+  }
+  .logo img {
+    width: 150px;
+  }
+}

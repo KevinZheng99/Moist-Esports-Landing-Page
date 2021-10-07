@@ -101,3 +101,10 @@
     display: block;
   }
 }
+
+@media (max-width: 500px) {
+  .hamburger-container {
+    left: 1em;
+    top: 1em;
+  }
+}

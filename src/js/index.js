@@ -115,11 +115,13 @@ linkTeams.addEventListener("click", function () {
 containerHamburger.addEventListener("click", function () {
   if (!containerHamburger.classList.contains("open")) {
     containerHamburger.classList.add("open");
+    containerHamburgerNav.classList.remove("hidden");
     requestAnimationFrame(function () {
       containerHamburgerNav.style.opacity = 1;
     });
   } else {
     containerHamburger.classList.remove("open");
+    containerHamburgerNav.classList.add("hidden");
     requestAnimationFrame(function () {
       containerHamburgerNav.style.opacity = 0;
     });
