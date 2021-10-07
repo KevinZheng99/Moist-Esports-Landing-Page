@@ -247,14 +247,6 @@ html {
     width: 150px;
   }
 
-  .hero-text-container {
-    font-size: 1.5rem;
-  }
-
-  .buy-now-btn {
-    font-size: 1rem;
-  }
-
   .moist-esports-summary-container {
     width: 95%;
   }
@@ -262,5 +254,15 @@ html {
   .sponsors-section {
     flex-direction: column;
     gap: 2em;
+  }
+}
+
+@media (max-width: 500px), (max-height: 550px) {
+  .hero-text-container {
+    font-size: 1.5rem;
+  }
+
+  .buy-now-btn {
+    font-size: 1rem;
   }
 }

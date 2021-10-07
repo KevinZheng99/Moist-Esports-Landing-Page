@@ -30,10 +30,9 @@ const containerPlayers = document.querySelector(".players-container");
 
 // Others
 const players = document.querySelectorAll(".player");
-const dropDownOverlay = document.querySelector(".drop-down-overlay");
 
 // Constants
-const IMAGE_REVEAL_TIMER = 0.5;
+const FADING_TIMER = 0.5;
 
 // Functions
 const collapseSection = function (element) {
@@ -90,6 +89,31 @@ const switchSections = function (
   }
 };
 
+const openLinkHamburger = function (container) {
+  if (container.classList.contains("collapsed")) {
+    // expand
+    container
+      .querySelectorAll("a")
+      .forEach(link => link.classList.remove("hidden"));
+
+    expandSection(container);
+    container.classList.remove("collapsed");
+    container.style.margin = `2em 0`;
+  } else {
+    // collapse
+    // Gives the animation before hiding the images
+    setTimeout(function () {
+      container
+        .querySelectorAll("a")
+        .forEach(link => link.classList.add("hidden"));
+    }, FADING_TIMER * 1000);
+
+    container.classList.add("collapsed");
+    collapseSection(container);
+    container.style.margin = 0;
+  }
+};
+
 ////////////////////
 // Event Handlers //
 ////////////////////
@@ -121,7 +145,10 @@ containerHamburger.addEventListener("click", function () {
     });
   } else {
     containerHamburger.classList.remove("open");
-    containerHamburgerNav.classList.add("hidden");
+    setTimeout(function () {
+      containerHamburgerNav.classList.add("hidden");
+    }, FADING_TIMER * 1000);
+
     requestAnimationFrame(function () {
       containerHamburgerNav.style.opacity = 0;
     });
@@ -129,53 +156,11 @@ containerHamburger.addEventListener("click", function () {
 });
 
 linkPartnersH.addEventListener("click", function () {
-  if (containerHamburgerPartners.classList.contains("collapsed")) {
-    // expand
-    containerHamburgerPartners
-      .querySelectorAll("a")
-      .forEach(link => link.classList.remove("hidden"));
-
-    expandSection(containerHamburgerPartners);
-    containerHamburgerPartners.classList.remove("collapsed");
-    containerHamburgerPartners.style.margin = `2em 0`;
-  } else {
-    // collapse
-    // Gives the animation before hiding the images
-    setTimeout(function () {
-      containerHamburgerPartners
-        .querySelectorAll("a")
-        .forEach(link => link.classList.add("hidden"));
-    }, IMAGE_REVEAL_TIMER * 1000);
-
-    containerHamburgerPartners.classList.add("collapsed");
-    collapseSection(containerHamburgerPartners);
-    containerHamburgerPartners.style.margin = `0`;
-  }
+  openLinkHamburger(containerHamburgerPartners);
 });
 
 linkTeamsH.addEventListener("click", function () {
-  if (containerHamburgerTeams.classList.contains("collapsed")) {
-    // expand
-    containerHamburgerTeams
-      .querySelectorAll("a")
-      .forEach(link => link.classList.remove("hidden"));
-
-    expandSection(containerHamburgerTeams);
-    containerHamburgerTeams.classList.remove("collapsed");
-    containerHamburgerTeams.style.margin = `2em 0`;
-  } else {
-    // collapse
-    // Gives the animation before hiding the images
-    setTimeout(function () {
-      containerHamburgerTeams
-        .querySelectorAll("a")
-        .forEach(link => link.classList.add("hidden"));
-    }, IMAGE_REVEAL_TIMER * 1000);
-
-    containerHamburgerTeams.classList.add("collapsed");
-    collapseSection(containerHamburgerTeams);
-    containerHamburgerTeams.style.margin = `0`;
-  }
+  openLinkHamburger(containerHamburgerTeams);
 });
 
 // Fading in Player Section
