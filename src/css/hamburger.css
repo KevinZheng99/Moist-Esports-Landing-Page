@@ -1,4 +1,5 @@
 .hamburger-container {
+  display: none;
   height: 40px;
   left: 2em;
   position: absolute;
@@ -52,7 +53,7 @@
 .hamburger-nav-container {
   background-color: black;
   min-height: 100%;
-  /* opacity: 0; */
+  opacity: 0;
   padding-top: 10em;
   position: absolute;
   transition: opacity 0.25s;
@@ -74,27 +75,29 @@
 
 /* Partners Container */
 
-.hamburger-partners-container {
+.hamburger-partners-container,
+.hamburger-teams-container {
   align-items: center;
   display: flex;
   transition: all 0.5s;
 }
 
-.hamburger-partners-container ul {
-  list-style-type: none;
-}
-
-.hamburger-partners-container li {
-  border: none;
-}
-
-.hamburger-partners-container img {
+.hamburger-partners-container img,
+.hamburger-teams-container img {
   filter: brightness(0) invert(1);
   max-height: 50px;
   max-width: 100px;
   transition: filter 0.25s;
 }
 
-.hamburger-partners-container img:hover {
+.hamburger-partners-container img:hover,
+.hamburger-teams-container img:hover {
   filter: brightness(0) invert(70%);
+}
+
+/* Media Queries */
+@media (max-width: 1200px) {
+  .hamburger-container {
+    display: block;
+  }
 }

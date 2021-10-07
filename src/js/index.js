@@ -16,6 +16,10 @@ const containerHamburgerNav = document.querySelector(
 const containerHamburgerPartners = document.querySelector(
   ".hamburger-partners-container"
 );
+const containerHamburgerTeams = document.querySelector(
+  ".hamburger-teams-container"
+);
+
 const containerDropDownPartners = document.querySelector(
   ".drop-down-partners-container"
 );
@@ -86,8 +90,9 @@ const switchSections = function (
   }
 };
 
-// Event Handlers
-
+////////////////////
+// Event Handlers //
+////////////////////
 linkPartners.addEventListener("click", function () {
   switchSections(
     containerDropDownPartners,
@@ -106,6 +111,7 @@ linkTeams.addEventListener("click", function () {
   );
 });
 
+// Hamburger links
 containerHamburger.addEventListener("click", function () {
   if (!containerHamburger.classList.contains("open")) {
     containerHamburger.classList.add("open");
@@ -142,6 +148,31 @@ linkPartnersH.addEventListener("click", function () {
     containerHamburgerPartners.classList.add("collapsed");
     collapseSection(containerHamburgerPartners);
     containerHamburgerPartners.style.margin = `0`;
+  }
+});
+
+linkTeamsH.addEventListener("click", function () {
+  if (containerHamburgerTeams.classList.contains("collapsed")) {
+    // expand
+    containerHamburgerTeams
+      .querySelectorAll("a")
+      .forEach(link => link.classList.remove("hidden"));
+
+    expandSection(containerHamburgerTeams);
+    containerHamburgerTeams.classList.remove("collapsed");
+    containerHamburgerTeams.style.margin = `2em 0`;
+  } else {
+    // collapse
+    // Gives the animation before hiding the images
+    setTimeout(function () {
+      containerHamburgerTeams
+        .querySelectorAll("a")
+        .forEach(link => link.classList.add("hidden"));
+    }, IMAGE_REVEAL_TIMER * 1000);
+
+    containerHamburgerTeams.classList.add("collapsed");
+    collapseSection(containerHamburgerTeams);
+    containerHamburgerTeams.style.margin = `0`;
   }
 });
 

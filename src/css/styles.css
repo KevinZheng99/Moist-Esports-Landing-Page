@@ -22,7 +22,7 @@ html {
   align-items: center;
   display: flex;
   gap: 1em;
-  justify-content: center;
+  justify-content: space-between;
   padding: 0.5em 3em;
 }
 
@@ -142,7 +142,7 @@ html {
   background-color: black;
   display: flex;
   flex-wrap: wrap;
-  gap: 2em;
+  gap: 5em;
   justify-content: center;
   padding: 2em 0;
 }
@@ -207,3 +207,12 @@ html {
 }
 
 /* Media Queries */
+@media (max-width: 1200px) {
+  .main-header {
+    justify-content: center;
+  }
+
+  .header-links {
+    display: none;
+  }
+}
