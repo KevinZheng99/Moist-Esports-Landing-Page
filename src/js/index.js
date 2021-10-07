@@ -2,9 +2,20 @@
 
 // Variables
 
+// Links
 const linkPartners = document.querySelector(".link-partners");
 const linkTeams = document.querySelector(".link-teams");
+const linkPartnersH = document.querySelector(".hamburger-partners");
+const linkTeamsH = document.querySelector(".hamburger-teams");
 
+// Containers
+const containerHamburger = document.querySelector(".hamburger-container");
+const containerHamburgerNav = document.querySelector(
+  ".hamburger-nav-container"
+);
+const containerHamburgerPartners = document.querySelector(
+  ".hamburger-partners-container"
+);
 const containerDropDownPartners = document.querySelector(
   ".drop-down-partners-container"
 );
@@ -13,11 +24,14 @@ const containerDropDownTeams = document.querySelector(
 );
 const containerPlayers = document.querySelector(".players-container");
 
+// Others
 const players = document.querySelectorAll(".player");
 const dropDownOverlay = document.querySelector(".drop-down-overlay");
 
-// Functions
+// Constants
+const IMAGE_REVEAL_TIMER = 0.5;
 
+// Functions
 const collapseSection = function (element) {
   requestAnimationFrame(function () {
     element.style.height = `0px`;
@@ -26,7 +40,6 @@ const collapseSection = function (element) {
 
 const expandSection = function (element) {
   const sectionHeight = element.scrollHeight;
-  console.log(sectionHeight);
 
   requestAnimationFrame(function () {
     element.style.height = `0px`;
@@ -93,11 +106,48 @@ linkTeams.addEventListener("click", function () {
   );
 });
 
-let isActive = false;
+containerHamburger.addEventListener("click", function () {
+  if (!containerHamburger.classList.contains("open")) {
+    containerHamburger.classList.add("open");
+    requestAnimationFrame(function () {
+      containerHamburgerNav.style.opacity = 1;
+    });
+  } else {
+    containerHamburger.classList.remove("open");
+    requestAnimationFrame(function () {
+      containerHamburgerNav.style.opacity = 0;
+    });
+  }
+});
+
+linkPartnersH.addEventListener("click", function () {
+  if (containerHamburgerPartners.classList.contains("collapsed")) {
+    // expand
+    containerHamburgerPartners
+      .querySelectorAll("a")
+      .forEach(link => link.classList.remove("hidden"));
+
+    expandSection(containerHamburgerPartners);
+    containerHamburgerPartners.classList.remove("collapsed");
+    containerHamburgerPartners.style.margin = `2em 0`;
+  } else {
+    // collapse
+    // Gives the animation before hiding the images
+    setTimeout(function () {
+      containerHamburgerPartners
+        .querySelectorAll("a")
+        .forEach(link => link.classList.add("hidden"));
+    }, IMAGE_REVEAL_TIMER * 1000);
+
+    containerHamburgerPartners.classList.add("collapsed");
+    collapseSection(containerHamburgerPartners);
+    containerHamburgerPartners.style.margin = `0`;
+  }
+});
 
 // Fading in Player Section
+let isActive = false;
 window.addEventListener("scroll", function () {
-  console.log(window.scrollY);
   if (
     containerPlayers.getBoundingClientRect().y <= window.scrollY &&
     !isActive
@@ -108,5 +158,14 @@ window.addEventListener("scroll", function () {
       });
     });
     isActive = true;
+  }
+
+  if (containerPlayers.getBoundingClientRect().y > window.scrollY) {
+    players.forEach(player => {
+      requestAnimationFrame(function () {
+        player.style.opacity = 0;
+      });
+    });
+    isActive = false;
   }
 });

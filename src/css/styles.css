@@ -6,6 +6,7 @@
 }
 
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
   font-family: "Roboto", sans-serif;
@@ -21,8 +22,12 @@ html {
   align-items: center;
   display: flex;
   gap: 1em;
-  justify-content: space-between;
+  justify-content: center;
   padding: 0.5em 3em;
+}
+
+.logo {
+  z-index: 10;
 }
 
 .header-links {
@@ -49,11 +54,12 @@ html {
 .drop-down-teams-container {
   align-items: center;
   background-color: black;
+  box-sizing: content-box;
   display: flex;
   flex-wrap: wrap;
-  gap: 2em;
+  gap: 5em;
   justify-content: center;
-  padding: 1em 0;
+  padding: 2em 0;
   position: absolute;
   transition: all 0.5s;
   width: 100%;
@@ -64,9 +70,8 @@ html {
 .drop-down-teams-container img,
 .sponsors-section img {
   filter: brightness(0) invert(1);
-  max-height: 50px;
-  max-width: 100px;
-  padding: 1em;
+  max-height: 75px;
+  max-width: 150px;
   transition: filter 0.25s;
 }
 
@@ -136,6 +141,7 @@ html {
   align-items: center;
   background-color: black;
   display: flex;
+  flex-wrap: wrap;
   gap: 2em;
   justify-content: center;
   padding: 2em 0;
@@ -189,7 +195,9 @@ html {
 /* Others */
 
 .collapsed {
+  opacity: 0;
   height: 0;
+  margin: 0;
   padding: 0;
   z-index: 0;
 }
@@ -197,3 +205,5 @@ html {
 .hidden {
   display: none;
 }
+
+/* Media Queries */

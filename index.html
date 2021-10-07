@@ -14,16 +14,42 @@
     />
     <link rel="stylesheet" href="./src/css/styles.css" />
     <link rel="stylesheet" href="./src/css/players.css" />
+    <link rel="stylesheet" href="./src/css/hamburger.css" />
     <script defer src="./src/js/index.js"></script>
   </head>
   <body>
     <div class="hero">
+      <div class="hamburger-nav-container">
+        <ul class="header-links hamburger-links">
+          <li><a href="#">Store</a></li>
+          <li><a class="hamburger-teams" href="#">Teams&#9660;</a></li>
+          <li>
+            <a class="hamburger-partners" href="#">Partners&#9660;</a>
+            <div class="hamburger-partners-container collapsed">
+              <a class="hidden" href=""><img src="./imgs/partners/hyper-x-logo.png" alt="HyperX Logo"></a>
+              <a class="hidden" href=""><img src="./imgs/partners/bmw-logo.png" alt="BMW Logo"></a>
+              <a class="hidden" href=""><img src="./imgs/partners/red-bull-logo.png" alt="Redbull Logo"></a>
+              <a class="hidden" href=""><img src="./imgs/partners/microsoft-logo.png" alt="Microsoft Logo"></a>
+              <a class="hidden" href=""><img src="./imgs/partners/twitch-logo.png" alt="Twitch Logo"></a>
+              <a class="hidden" href=""><img src="./imgs/partners/geico-logo.png" alt="Geico Logo"></a>
+              <a class="hidden" href=""><img src="./imgs/partners/squarespace-logo.png" alt="Squarespace Logo"></a>
+            </div>
+          </li>
+          <li><a href="#About">About</a></li>
+        </ul>
+      </div>
+
       <header class="main-header">
-        <a href="#"><img src="./imgs/logo.png" alt="Moist Esports Logo" /></a>
+        <div class="hamburger-container">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <a class="logo" href="#"><img src="./imgs/logo.png" alt="Moist Esports Logo" /></a>
         <ul class="header-links">
           <li><a href="#">Store</a></li>
-          <li><a class="drop-down-arrow link-teams" href="#">Teams&#9660;</a></li>
-          <li><a class="drop-down-arrow link-partners" href="#">Partners&#9660;</a></li>
+          <li><a class="link-teams" href="#">Teams&#9660;</a></li>
+          <li><a class="link-partners" href="#">Partners&#9660;</a></li>
           <li><a href="#About">About</a></li>
         </ul>
       </header>
