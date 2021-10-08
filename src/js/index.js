@@ -1,4 +1,4 @@
-"use strict";
+import * as helper from "./helper.js";
 
 // Variables
 
@@ -12,7 +12,6 @@ const linkTeamsH = document.querySelector(".hamburger-teams");
 const btnAboutH = document.querySelector(".about-btn-h");
 
 // Containers
-const containerHeader = document.querySelector(".main-header");
 const containerHamburger = document.querySelector(".hamburger-container");
 const containerHamburgerNav = document.querySelector(
   ".hamburger-nav-container"
@@ -39,20 +38,10 @@ const players = document.querySelectorAll(".player");
 const FADING_TIMER = 0.5;
 
 // Functions
-const collapseSection = function (element) {
-  requestAnimationFrame(function () {
-    element.style.height = `0px`;
-  });
-};
-
-const expandSection = function (element) {
-  const sectionHeight = element.scrollHeight;
-
-  requestAnimationFrame(function () {
-    element.style.height = `0px`;
-
+const fadePlayerSections = function (opacity) {
+  players.forEach(player => {
     requestAnimationFrame(function () {
-      element.style.height = `${sectionHeight}px`;
+      player.style.opacity = opacity;
     });
   });
 };
@@ -65,67 +54,39 @@ const switchSections = function (
 ) {
   if (!sectionOpen.classList.contains("collapsed")) {
     // collaspses
-    collapseSection(sectionOpen);
-    sectionOpen.classList.add("collapsed");
-    linkOpen.style.textDecoration = "none";
-
-    sectionOpen
-      .querySelectorAll("a")
-      .forEach(link => link.classList.add("hidden"));
+    helper.collapseSectionStyle(sectionOpen, linkOpen);
+    helper.hideLinks(sectionOpen);
   } else {
     // expands
-    sectionOpen.querySelectorAll("a").forEach(link => {
-      link.classList.remove("hidden");
-    });
-    expandSection(sectionOpen);
+    helper.showLinks(sectionOpen);
+    helper.expandSection(sectionOpen);
     sectionOpen.classList.remove("collapsed");
     linkOpen.style.textDecoration = "underline";
 
     // Hides the images of the container being swapped
-    sectionClose
-      .querySelectorAll("a")
-      .forEach(link => link.classList.add("hidden"));
+    helper.hideLinks(sectionClose);
 
     // Collapses active container when swapping sections
-    collapseSection(sectionClose);
-    sectionClose.classList.add("collapsed");
-    linkClose.style.textDecoration = "none";
+    helper.collapseSectionStyle(sectionClose, linkClose);
   }
 };
 
 const openLinkHamburger = function (container) {
   if (container.classList.contains("collapsed")) {
     // expand
-    container
-      .querySelectorAll("a")
-      .forEach(link => link.classList.remove("hidden"));
-
-    expandSection(container);
+    helper.showLinks(container);
+    helper.expandSection(container);
     container.classList.remove("collapsed");
     container.style.margin = `2em 0`;
-
-    requestAnimationFrame(function () {
-      containerHamburgerNav.style.height = `auto`;
-    });
   } else {
     // collapse
-    // Gives the animation before hiding the images
+    // Gives fade animation before hiding the images
     setTimeout(function () {
-      container
-        .querySelectorAll("a")
-        .forEach(link => link.classList.add("hidden"));
+      helper.hideLinks(container);
     }, FADING_TIMER * 1000);
 
-    const navHeight = containerHamburgerNav.scrollHeight;
-    const headerHeight = containerHeader.scrollHeight;
-    requestAnimationFrame(function () {
-      containerHamburgerNav.style.height = `${
-        navHeight - container.scrollHeight - headerHeight
-      }px`;
-    });
-
     container.classList.add("collapsed");
-    collapseSection(container);
+    helper.collapseSection(container);
     container.style.margin = 0;
   }
 };
@@ -192,20 +153,12 @@ window.addEventListener("scroll", function () {
     containerPlayers.getBoundingClientRect().y <= window.scrollY &&
     !isActive
   ) {
-    players.forEach(player => {
-      requestAnimationFrame(function () {
-        player.style.opacity = 1;
-      });
-    });
+    fadePlayerSections(1);
     isActive = true;
   }
 
   if (containerPlayers.getBoundingClientRect().y > window.scrollY) {
-    players.forEach(player => {
-      requestAnimationFrame(function () {
-        player.style.opacity = 0;
-      });
-    });
+    fadePlayerSections(0);
     isActive = false;
   }
 });
