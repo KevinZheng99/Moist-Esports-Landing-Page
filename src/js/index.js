@@ -8,7 +8,11 @@ const linkTeams = document.querySelector(".link-teams");
 const linkPartnersH = document.querySelector(".hamburger-partners");
 const linkTeamsH = document.querySelector(".hamburger-teams");
 
+// Buttons
+const btnAboutH = document.querySelector(".about-btn-h");
+
 // Containers
+const containerHeader = document.querySelector(".main-header");
 const containerHamburger = document.querySelector(".hamburger-container");
 const containerHamburgerNav = document.querySelector(
   ".hamburger-nav-container"
@@ -99,6 +103,10 @@ const openLinkHamburger = function (container) {
     expandSection(container);
     container.classList.remove("collapsed");
     container.style.margin = `2em 0`;
+
+    requestAnimationFrame(function () {
+      containerHamburgerNav.style.height = `auto`;
+    });
   } else {
     // collapse
     // Gives the animation before hiding the images
@@ -108,10 +116,29 @@ const openLinkHamburger = function (container) {
         .forEach(link => link.classList.add("hidden"));
     }, FADING_TIMER * 1000);
 
+    const navHeight = containerHamburgerNav.scrollHeight;
+    const headerHeight = containerHeader.scrollHeight;
+    requestAnimationFrame(function () {
+      containerHamburgerNav.style.height = `${
+        navHeight - container.scrollHeight - headerHeight
+      }px`;
+    });
+
     container.classList.add("collapsed");
     collapseSection(container);
     container.style.margin = 0;
   }
+};
+
+const closeHamburgerNav = function () {
+  containerHamburger.classList.remove("open");
+  setTimeout(function () {
+    containerHamburgerNav.classList.add("hidden");
+  }, FADING_TIMER * 1000);
+
+  requestAnimationFrame(function () {
+    containerHamburgerNav.style.opacity = 0;
+  });
 };
 
 ////////////////////
@@ -144,14 +171,7 @@ containerHamburger.addEventListener("click", function () {
       containerHamburgerNav.style.opacity = 1;
     });
   } else {
-    containerHamburger.classList.remove("open");
-    setTimeout(function () {
-      containerHamburgerNav.classList.add("hidden");
-    }, FADING_TIMER * 1000);
-
-    requestAnimationFrame(function () {
-      containerHamburgerNav.style.opacity = 0;
-    });
+    closeHamburgerNav();
   }
 });
 
@@ -162,6 +182,8 @@ linkPartnersH.addEventListener("click", function () {
 linkTeamsH.addEventListener("click", function () {
   openLinkHamburger(containerHamburgerTeams);
 });
+
+btnAboutH.addEventListener("click", closeHamburgerNav);
 
 // Fading in Player Section
 let isActive = false;

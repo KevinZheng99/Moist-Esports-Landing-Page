@@ -5,7 +5,7 @@
   position: absolute;
   top: 2em;
   width: 40px;
-  z-index: 1;
+  z-index: 11;
 }
 
 .hamburger-container:hover {
@@ -52,12 +52,13 @@
 
 .hamburger-nav-container {
   background-color: black;
-  min-height: 100%;
+  height: auto;
   opacity: 0;
   padding-top: 10em;
   position: absolute;
   transition: opacity 0.25s;
   width: 100%;
+  z-index: 10;
 }
 
 .hamburger-links {
@@ -73,12 +74,13 @@
   padding-bottom: 1em;
 }
 
-/* Partners Container */
+/* Partners/Teams Container */
 
 .hamburger-partners-container,
 .hamburger-teams-container {
-  align-items: center;
   display: flex;
+  flex-direction: column;
+  gap: 2em;
   transition: all 0.5s;
 }
 
